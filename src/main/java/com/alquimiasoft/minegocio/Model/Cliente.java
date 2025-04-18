@@ -26,4 +26,7 @@ public class Cliente {
     @Column(length = 10)
     private String telefono;
 
+    @ManyToOne
+    @JoinColumn(name = "id_sucursal", nullable = false)
+    private Sucursal sucursal;
 }

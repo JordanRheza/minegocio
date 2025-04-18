@@ -3,6 +3,9 @@ package com.alquimiasoft.minegocio.Model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 public class Sucursal {
@@ -18,4 +21,7 @@ public class Sucursal {
 
     @Column(nullable = false, length = 100)
     private String direccion;
+
+    @OneToMany(mappedBy = "sucursal")
+    private List<Cliente> clientes = new ArrayList<>();
 }
