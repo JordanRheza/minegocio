@@ -1,9 +1,12 @@
 package com.alquimiasoft.minegocio.Dto;
 
-import jakarta.persistence.Column;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ClienteDto {
 
     private Integer id;
@@ -12,4 +15,6 @@ public class ClienteDto {
     private String nombres;
     private String correo;
     private String telefono;
+
+
 }
