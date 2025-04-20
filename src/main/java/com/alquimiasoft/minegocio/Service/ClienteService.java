@@ -1,16 +1,20 @@
 package com.alquimiasoft.minegocio.Service;
 
 import com.alquimiasoft.minegocio.Dto.ClienteDto;
+import com.alquimiasoft.minegocio.Dto.SucursalDto;
 import com.alquimiasoft.minegocio.Exception.RecursoNoEncontrado;
 import com.alquimiasoft.minegocio.Model.Cliente;
 import com.alquimiasoft.minegocio.Repository.ClienteRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class ClienteService implements IClienteService{
 
@@ -19,17 +23,39 @@ public class ClienteService implements IClienteService{
 
     @Override
     public List<ClienteDto> listarClientes() {
-        return this.clienteRepository.findAll().stream()
-                .map(this::conversionADto)
-                .collect(Collectors.toList());
+        List<ClienteDto> datosClientes = new ArrayList<>();
+
+        try {
+            datosClientes = this.clienteRepository.findAll().stream()
+                    .map((this::conversionADto))
+                    .toList();
+            log.info("Datos de Todos los clientes: {}", datosClientes);
+        } catch (Exception e) {
+            log.error("Error al mostrar clientes: {}", e.getMessage());
+        }
+        return datosClientes;
     }
 
+    //No usado
     @Override
     public ClienteDto buscarClientePorId(Integer id) {
+
         return this.clienteRepository.findById(id)
                 .map(this::conversionADto)
                 .orElseThrow(() -> new RecursoNoEncontrado("No se encontró el cliente con el ID: " + id));
     }
+
+    public ClienteDto buscarCliente(String numeroIdentificacion, String nombres) {
+
+            return this.clienteRepository.findByNumeroIdentificacionOrNombres(numeroIdentificacion, nombres)
+                    .stream()
+                    .findFirst()
+                    .map(this::conversionADto)
+                    .orElseThrow(() -> new RecursoNoEncontrado(String.format(
+                            "No se encontró el cliente con el número de identificación %s, con el nombre %s",
+                            numeroIdentificacion, nombres)));
+    }
+
 
     @Override
     public Cliente guardarCliente(Cliente cliente) {
@@ -68,13 +94,23 @@ public class ClienteService implements IClienteService{
 
     //Conversion de Modelo a Dto
     private ClienteDto conversionADto(Cliente cliente) {
+        List<SucursalDto> sucursales = cliente.getSucursales().stream()
+                .map(sucursal -> new SucursalDto(
+                        sucursal.getId(),
+                        sucursal.getCiudad(),
+                        sucursal.getProvincia(),
+                        sucursal.getDireccion()
+                ))
+                .collect(Collectors.toList());
+
         return new ClienteDto(
                 cliente.getId(),
                 cliente.getTipoIdentificacion(),
                 cliente.getNumeroIdentificacion(),
                 cliente.getNombres(),
                 cliente.getCorreo(),
-                cliente.getTelefono()
+                cliente.getTelefono(),
+                sucursales
         );
     }
 }

@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestControllerAdvice
-public class Exception {
+public class MsjException {
     @ExceptionHandler(RecursoNoEncontrado.class)
     public ResponseEntity<Map<String, Object>> manejarException(RecursoNoEncontrado ex) {
         Map<String, Object> response = new HashMap<>();

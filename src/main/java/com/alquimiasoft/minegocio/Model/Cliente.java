@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -30,7 +32,6 @@ public class Cliente {
     @Column(length = 10)
     private String telefono;
 
-    @ManyToOne
-    @JoinColumn(name = "id_sucursal", nullable = false)
-    private Sucursal sucursal;
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
+    private List<Sucursal> sucursales;
 }

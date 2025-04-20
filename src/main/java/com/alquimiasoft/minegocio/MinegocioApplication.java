@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MinegocioApplication {
 
-	private static final Logger logger = LogManager.getLogger(MinegocioApplication.class);
+	private static final Logger log = LogManager.getLogger(MinegocioApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(MinegocioApplication.class, args);
-		logger.info("Se levantó el API");
+		log.info("Se levantó el API");
 	}
 }
