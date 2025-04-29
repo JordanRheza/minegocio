@@ -1,12 +1,15 @@
-package com.alquimiasoft.minegocio.Repository;
+package com.alquimiasoft.minegocio.repository;
 
-import com.alquimiasoft.minegocio.Model.Cliente;
+import com.alquimiasoft.minegocio.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
+
     List<Cliente> findByNumeroIdentificacionOrNombres(String numeroIdentificacion, String nombres);
+    Optional<Cliente> findByNumeroIdentificacion(String numeroIdentificacion);
 }
