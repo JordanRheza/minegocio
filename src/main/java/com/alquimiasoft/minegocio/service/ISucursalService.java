@@ -8,5 +8,5 @@ import java.util.List;
 public interface ISucursalService {
 
     void agregarSucursal(Integer clienteId, SucursalDto sucursalDto) throws NotFoundException;
-    List<SucursalDto> listarDirecciones(Integer clienteId);
+    List<SucursalDto> listarDirecciones(Integer clienteId) throws NotFoundException;
 }

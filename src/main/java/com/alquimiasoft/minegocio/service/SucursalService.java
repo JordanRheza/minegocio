@@ -50,7 +50,10 @@ public class SucursalService implements ISucursalService{
     }
 
     @Override
-    public List<SucursalDto> listarDirecciones(Integer clienteId) {
+    public List<SucursalDto> listarDirecciones(Integer clienteId) throws NotFoundException {
+
+        Cliente cliente = clienteRepository.findById(clienteId)
+                .orElseThrow(() -> new NotFoundException("No se encontró el cliente con el ID: " + clienteId));
 
         List<SucursalDto> datosClientes;
 

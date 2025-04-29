@@ -24,9 +24,9 @@ public class SucursalController {
     private SucursalService sucursalService;
 
     // Funcionalidad para registrar una nueva dirección por cliente
-    @PostMapping("surcusal/{id}")
+    @PostMapping("sucursal/{id}")
     @Operation(summary = "Agregar un nueva sucursal al cliente.", description = "Agrega una sucursal al cliente")
-    public ResponseEntity<Map<String, String>> agregarCliente(@Valid @PathVariable int id, @RequestBody SucursalDto sucursalDto) throws NotFoundException {
+    public ResponseEntity<Map<String, String>> agregarCliente(@PathVariable int id, @Valid @RequestBody SucursalDto sucursalDto) throws NotFoundException {
         this.sucursalService.agregarSucursal(id, sucursalDto);
 
         Map<String, String> response = new HashMap<>();
