@@ -1,14 +1,13 @@
-package com.alquimiasoft.minegocio.Service;
+package com.alquimiasoft.minegocio.service;
 
-import com.alquimiasoft.minegocio.Dto.ClienteDto;
-import com.alquimiasoft.minegocio.Model.Cliente;
+import com.alquimiasoft.minegocio.dto.ClienteDto;
+import com.alquimiasoft.minegocio.exception.NotFoundException;
 
 import java.util.List;
 
 public interface IClienteService {
 
-    public List<ClienteDto> listarClientes();
-    public ClienteDto buscarClientePorId(Integer id);
-    public Cliente guardarCliente(Cliente cliente);
-    public void eliminarClientePorId(Integer id);
+    List<ClienteDto> listarClientes() throws NotFoundException;
+    ClienteDto guardarCliente(ClienteDto clienteDto);
+    void eliminarClientePorId(Integer id) throws NotFoundException;
 }
