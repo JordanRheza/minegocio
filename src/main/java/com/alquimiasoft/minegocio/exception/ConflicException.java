@@ -1,7 +1,7 @@
-package com.alquimiasoft.minegocio.Exception;
+package com.alquimiasoft.minegocio.exception;
 
 public class ConflicException extends RuntimeException {
-  public ConflicException(String message) {
-    super(message);
-  }
+    public ConflicException(String message) {
+        super(message);
+    }
 }

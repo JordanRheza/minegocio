@@ -1,4 +1,4 @@
-package com.alquimiasoft.minegocio.Dto;
+package com.alquimiasoft.minegocio.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class ErrorResponseDto {
-    private String error;
-    private String details;
-    private String status;
+    private String mensajeSistema;
+    private String mensajeUsuario;
+    private String estado;
 }
