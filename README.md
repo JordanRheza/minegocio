@@ -23,7 +23,7 @@
 ## Importación desde Postman
 
 Se agregó al proyecto un archivo con los endpoints y los requests, que se puede importar directamente desde Postman para realizar pruebas y consultas al API de manera sencilla.  
-Se encuentra en `rosources/static`.
+Se encuentra en `resources/static`.
 
 ---
 
