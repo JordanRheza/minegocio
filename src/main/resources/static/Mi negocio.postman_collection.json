@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "b3e762fe-48bb-4c8e-a2ab-0d107ab46ad7",
+		"name": "Mi negocio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39832215"
+	},
+	"item": [
+		{
+			"name": "Buscar Cliente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codigo\": 1,\r\n    \"mensajeUsuario\": \"El cliente con la identificacion '09876543' ya existe\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/cliente/?numeroIdentificacion=0987654321&nombres=string",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"cliente",
+						""
+					],
+					"query": [
+						{
+							"key": "numeroIdentificacion",
+							"value": "0987654321"
+						},
+						{
+							"key": "nombres",
+							"value": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar Cliente",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tipoIdentificacion\": \"CEDULA\",\r\n    \"numeroIdentificacion\": \"0987654322\",\r\n    \"nombres\": \"mario luis\",\r\n    \"correo\": \"mario@gmail.com\",\r\n    \"telefono\": \"09876543\",\r\n    \"sucursales\": [\r\n    {\r\n      \"ciudad\": \"Guayaquil\",\r\n      \"provincia\": \"Guayas\",\r\n      \"direccion\": \"ABC 123\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/cliente",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"cliente"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"clientes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Cliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"tipoIdentificacion\": \"CEDULA\",\r\n    \"numeroIdentificacion\": \"0987654321\",\r\n    \"nombres\": \"Juan Perez\",\r\n    \"correo\": \"juan@gmail.com\",\r\n    \"telefono\": \"0987654321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/cliente/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"cliente",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar Cliente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/cliente/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"cliente",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sucursales Cliente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8083/sucursal/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"sucursal",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar Surcursal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"provincia\": \"nuevaSucursal\",\r\n  \"ciudad\": \"nuevaSucursal\",\r\n  \"direccion\": \"abc43\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8083/surcusal/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8083",
+					"path": [
+						"surcusal",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI5ZGUxZDhmMy1iYmY0LTQ4NjYtOTgyZS03NDU4YTgxODg5OGIiLCJqdGkiOiJiZjFlYmJiNWViOTVhM2Y1ZWM0MDM3YmE2MzY3ODk2OTc3ZWE0ZTlmZjkwZjAyYWQ4M2I4ZjEwMGNiNjYzNjkxYTc0NmQ5MDUzNzU4MDk2OCIsImlhdCI6MTc0NDk1Mjk4Mi42Nzc0MiwibmJmIjoxNzQ0OTUyOTgyLjY3NzQyNCwiZXhwIjoxNzQ0OTU2NTgyLjY2MzU2MSwic3ViIjoiMyIsInNjb3BlcyI6W119.ivDqis6XCrmDKron0JhipJkfFUqgMMAAmNOhG3dVPggHe_o7hSpSL-y3ruROatkzuUt3O58_cAp7HjQiKcUdvHPq0aVdyL-k2wMPFCb31wiJz_Wdn-x8etestzatpZ9HTc-SPQgZxH8cSLdNMlQSPxLXKjXfJHRfksku0No055h0PXXydWU8V9pu2ljH-vZaT_LvIwHjuBU0mjlr8rFh92TTPjpyu4Zu16PAQxF-M2mV7Q3D4ElxhsxhN8QNthMnxyf5JWooyFtzEJgOVAzOfuuQaRkw8TkYkrJFyAs-pQw8u_-DNAdd3SBD4y106qlW0O_sOwRDpkvCUdAZ4ViImYRg6Gil-95B3mIcinjTVv5PmxORW9Fui6SuWRpLkn5lHCUPbqaTdD43638JG9IU1z2laFT6_dtxd8mSE-WmDiB01g-YSvvGk07j7HDZz5Rszc5tSjuG-C66JwDP9Ux6-3KrDCMVBhJaohAejENRcxcsdxoMYkt6UV9VxE_HqM2M-6qTrT_mixG1a_xDrSlRMcG2cl4WopX77dSlDMLjfIqM04I2Co8B6ibJyOqYKnnCiCRPTiZquF9YiV8QRGHIJU-9oLvp1v0Nh5yi_qbTTXVy-MpwtNJfLJvd-hVhq3X5iC_I_zKhhnqCIn9yezZIegccfepHqN_E9VNi0mLZd-o",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
